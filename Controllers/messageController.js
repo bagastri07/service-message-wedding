@@ -15,7 +15,7 @@ const MessageController = {
         return response(res, 200, true, 'Sukses', saveMessage)
     },
     readAll: (req, res) => {
-        Message.find((err, doc) => {
+        Message.find({}).sort({createdAt: -1}).exec((err, doc) => {
             if (err) return response(res, 500, false, err)
             return response(res, 200, true, 'Sukses Cui', doc)
         })
