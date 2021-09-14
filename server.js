@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
 
 //Router
 app.use('/message', require('./Routers/messageRouter'))
+app.use('/event', require('./Routers/eventRouter'))
 
 app.use((req, res, next) => {
     const err = new Error("");
