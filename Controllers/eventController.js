@@ -22,7 +22,7 @@ const EvenetController = {
         })
     },
     viewWithMessage: (req, res) => {
-        Event.findById(req.params.id_event).populate('message').exec((err, doc) => {
+        Event.findById(req.params.id_event).populate('message', null, null, {sort: {createdAt: -1}}).exec((err, doc) => {
             if (!doc) return response(res, 400, true, 'Ga ada Event dengan id tersebut')
             if (err) return response(res, 500, false, err)
             return response(res, 200, true, 'Sukses', doc)
