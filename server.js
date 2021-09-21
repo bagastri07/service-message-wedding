@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const response = require('./_helper/response')
+const cors = require('cors')
 require('dotenv').config()
 
 const app = express()
@@ -12,6 +13,11 @@ mongoose.connect(process.env.DATABASE, {useNewUrlParser: true, useUnifiedTopolog
     if (err) throw err
     console.log('Database Connected:))')
 })
+
+//use Corst
+app.use(cors({
+    origin: '*'
+}))
 
 //BOdy Parser
 app.use(express.json())
@@ -42,3 +48,4 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
     console.log('Listerning on port:' + port)
 })
+
